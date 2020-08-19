@@ -25,6 +25,12 @@ Route::group(['namespace'=>'Admin','middleware'=>'auth:admin'], function () {
 		Route::get('create', 'LanguagesController@create')->name('admin.languages.create');
 		Route::post('store', 'LanguagesController@store')->name('admin.languages.store');
 
+
+		Route::get('edit/{id}', 'LanguagesController@edit')->name('admin.languages.edit');
+		Route::post('update/{id}', 'LanguagesController@update')->name('admin.languages.update');
+
+		Route::get('delete/{id}', 'LanguagesController@delete')->name('admin.languages.delete');
+
 	});
 
 

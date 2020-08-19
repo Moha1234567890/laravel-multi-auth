@@ -29,13 +29,68 @@ class LanguagesController extends Controller
     	try {
     		Language::create($request->except(['_token']));
 
-    	return redirect()->route('admin.languages.create')->with('success','created');
+    	return redirect()->route('admin.languages.index')->with('success','created');
     } catch(Exception $e) {
 
          return redirect()->route('admin.languages.index')->with('success','created');
     	
      }
     	
+    }
+
+
+     public function edit($id) {
+
+     	$language = Language::select()->find($id);
+
+     	if(!$language) {
+     		return redirect()->route('admin.languages.index')->with(['error' => 'lang not found']);
+     	}
+
+    	return view('admin.languages.edit', compact('language'));
+    }
+
+     public function update($id, LanguageRequest $request) {
+
+     	try {
+     		$language = Language::find($id);
+
+	     	if(!$language) {
+	     		return redirect()->route('admin.languages.edit', $id)->with(['error' => 'lang not found']);
+	     	}
+
+	     	if(!$request->has('active'))
+	     		$request->request->add(['active'=> 0]);
+
+	     	$language->update($request->except('_token'));
+
+	     	return redirect()->route('admin.languages.index')->with(['success' => 'updated']);
+	     } catch(Exception $e) {
+	     	return redirect()->route('admin.languages.edit', $id)->with(['error' => 'lang not found']);
+	     }
+
+    	
+    }
+
+    public function delete($id) {
+
+     	try {
+
+
+     		$language = Language::find($id);
+
+     	if(!$language) {
+     		return redirect()->route('admin.languages.index')->with(['error' => 'lang not found']);
+     	}
+
+     	$language->delete();
+
+    	return redirect()->route('admin.languages.index')->with(['success' => 'deleted']);
+      } catch(Exception $e) {
+
+      	return redirect()->route('admin.languages.index')->with(['error' => 'smth wrong']);
+
+      }
     }
 
    

@@ -26,6 +26,8 @@ class Language extends Model
    protected $hidden = ['created_at',
         'updated_at'];
 
+       
+
    public function scopeActive($q) {
     return $q->where('active',1);
    }
