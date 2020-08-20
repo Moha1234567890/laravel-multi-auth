@@ -46,6 +46,8 @@ Route::group(['namespace'=>'Admin','middleware'=>'auth:admin'], function () {
 
 		Route::get('delete/{id}', 'MainCategoriesController@delete')->name('admin.maincategories.delete');
 
+		
+
 	});
 
 });
@@ -56,5 +58,9 @@ Route::group(['namespace'=>'Admin','middleware'=>'guest:admin'], function () {
     Route::post('login','LoginController@login')->name('admin.login');
 });
 
+
+Route::get('showfuc', function() {
+	return get_default_lang();
+});
 
 

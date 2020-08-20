@@ -32,7 +32,7 @@ class Language extends Model
     return $q->where('active',1);
    }
 
-   public function scopeSeclection($q) {
+   public function scopeSelection($q) {
     return $q->select('id','abbr', 'name', 'direction', 'active');
    }
 

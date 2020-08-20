@@ -62,8 +62,8 @@
 
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
 
-                                                @if(get_languages() -> count() > 0)
-                                                    @foreach(get_languages() as $index => $lang)
+                                                @if(getLanguages() -> count() > 0)
+                                                    @foreach(getLanguages() as $index => $lang)
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
@@ -79,7 +79,7 @@
                                                             </div>
 
 
-                                                            <div class="col-md-6 hidden">
+                                                            <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="projectinput1"> أختصار اللغة {{__('messages.'.$lang -> abbr)}} </label>
                                                                     <input type="text" id="abbr"

@@ -29,8 +29,8 @@ class Main_Category extends Model
     return $q->where('active',1);
    }
 
-   public function scopeSeclection($q) {
-    return $q->select('id','trans_lang', 'trans_of', 'name', 'active', 'slug');
+   public function scopeSelection($q) {
+    return $q->select('id','abbr','trans_lang', 'trans_of', 'name', 'active', 'slug');
    }
 
 }
