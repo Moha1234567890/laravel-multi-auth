@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Language extends Model
+class Main_Category extends Model
 {
 
   
@@ -24,4 +24,13 @@ class Language extends Model
     ];
 
    public $timestamps = false;
+
+   public function scopeActive($q) {
+    return $q->where('active',1);
+   }
+
+   public function scopeSeclection($q) {
+    return $q->select('id','trans_lang', 'trans_of', 'name', 'active', 'slug');
+   }
+
 }
