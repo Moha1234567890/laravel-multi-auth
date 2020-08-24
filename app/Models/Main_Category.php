@@ -33,4 +33,15 @@ class Main_Category extends Model
     return $q->select('id','abbr','trans_lang', 'trans_of', 'name', 'active', 'slug');
    }
 
+   public function getActive(){
+      return   $this -> active == 1 ? 'مفعل'  : 'غير مفعل';
+    }
+
+
+    public function getPhotoAttribute($val)
+    {
+        return ($val !== null) ? asset('public/assets/' . $val) : "";
+
+    }
+
 }
